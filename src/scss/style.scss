@@ -1,0 +1,410 @@
+@import "mixins.scss";
+//ШРИФТЫ
+@import url(https://fonts.googleapis.com/css?family=Raleway:regular,500,600,700);
+@import url(https://fonts.googleapis.com/css?family=Bebas+Neue:regular);
+
+@import "fonts";
+
+//ШРИФТ ПО УМОЛЧАНИЮ
+$fontfamily: "Raleway";
+
+//ПЕРЕМЕННЫЕ
+$minwidth: 320;
+$maxWidth: 3566;
+$maxWidthContainer: 3266;
+$md1: $maxWidthContainer + 12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
+
+
+//ОБНУЛЕНИЕ
+@import "null.scss";
+
+body {
+	
+}
+body._lock {
+	overflow: hidden;
+}
+
+//ОБОЛОЧКА
+.wrapper {
+	overflow: hidden;
+	min-height: 100%; //чтобы wrapper был на всю высоту
+}
+
+//ОСНОВНАЯ СЕТКА
+
+//упрощенное
+._container {
+	max-width: 3266px;
+	padding: 0 20px; //задаем отступы по 15px чтобы контейнер не ударялся о края странички
+	margin: 0px auto; //центровка контейнера
+}
+
+//ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ
+@import "ui.scss";
+@import "header.scss";
+@import "footer.scss";
+
+//==================================================================
+//ОСНОВНОЙ БЛОК
+.page {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column; //сделали фулл скрин
+	&__wrapper {
+	}
+	&__main-block {
+		background-color: #1a1b1c;
+	}
+	&__container {
+		display: flex;
+	}
+	&__imageblock {
+	}
+	&__content {
+		height: 100%;
+		background: url("@img/lines.png") bottom / cover no-repeat;
+		@include adaptiveValue ("margin-top", -180, -60, 0);
+	}
+	&__description {
+	}
+	&__offers {
+	}
+	&__element {
+		display: flex;
+		flex-direction: column;
+		@include adaptiveValue ("margin-top", 460, 0, 0);
+		flex: 0 1 9%;
+		span {
+			margin: 0 10px 0 10px;
+			display: inline-block;
+			text-align: center;
+			font-family: 'MyriadPro';
+			font-weight: 300;
+			@include adaptiveValue ("font-size", 120, 0, 0);
+			position: relative;
+			color: #c2c2c2;
+			letter-spacing: 0.05em;
+			}
+	}
+}
+.imageblock {
+	position: relative;
+	@include adaptiveValue ("height", 790, 65, 0);
+	@include adaptiveValue ("margin-top", 325, -20, 0);
+	z-index: 2;
+	&__bg {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+}
+.description-page {
+	flex: 0 1 42%;
+	&__subtitle {
+		@include adaptiveValue ("font-size", 70, 0, 0);
+		font-weight: 600;
+		color: #fff;
+		@include adaptiveValue ("margin-bottom", 90, -30, 0);
+		letter-spacing: 0.009em;
+		line-height: 50px;
+	}
+	&__title {
+		font-family: 'Bebas Neue';
+		@include adaptiveValue ("font-size", 145, -5, 0);
+		font-weight: 400;
+		color: #fff;
+		@include adaptiveValue ("margin-bottom", 90, -30, 0);
+		letter-spacing: 0.16em;
+		span {
+			font-family: 'MyriadPro';
+			font-weight: 300;
+			@include adaptiveValue ("font-size", 80, 14, 0);
+			position: absolute;
+			@include adaptiveValue ("margin-left", 90, 10, 0);
+			color: #c2c2c2;
+			letter-spacing: 0.07em;
+		}
+	}
+	&__subtitle2-block {
+		background-color: #40ff9a;
+		align-items: center;
+		@include adaptiveValue ("margin-bottom", 80, -30, 0);
+		@include adaptiveValue ("padding-right", 10, 10, 0);
+		@include adaptiveValue ("padding-top", 40, -5, 0);
+		@include adaptiveValue ("padding-bottom", 40, -5, 0);
+		cursor: pointer;
+		:hover {
+			box-shadow: 10px 5px 50px rgba(64, 255, 154, 0.3);
+			border-radius: 50%;
+		}
+		:active {
+			color: #fff;
+		}
+	}
+	&__subtitle2 {
+		@include adaptiveValue ("padding-left", 35, 15, 0);
+		@include adaptiveValue ("font-size", 61, 5, 0);
+		font-weight: 700;
+		color: #1a1b1c;
+		letter-spacing: 0.05em;
+	}
+	&__text {
+		font-weight: 400;
+		color: #fff;
+		letter-spacing: 0.05em;
+		@include adaptiveValue ("font-size", 48, 5, 0);
+		@include adaptiveValue ("line-height", 70, 3, 0);
+		@include adaptiveValue ("margin-bottom", 230, 70, 0);
+	}
+}
+.offers-page {
+	flex: 0 1 49%;
+	@include adaptiveValue ("margin-top", 223, 0, 0);
+	justify-content: space-between;
+	z-index: 1;
+	&__row {
+	display: flex;
+	justify-content: space-between;
+	}
+	&__column {
+		display: flex;
+		flex-direction: column;
+		@include adaptiveValue ("margin-right", 90, 10, 0);
+		@include adaptiveValue ("height", 603, 103, 0);
+		@include adaptiveValue ("width", 500, 100, 0);
+	}
+	&__icon {
+		display: flex;
+		@include adaptiveValue ("height", 215, 0, 0);
+		@include adaptiveValue ("width", 215, 0, 0);
+		margin: 0 auto;
+		justify-content: center;
+		align-items: center;
+		background-color: #40ff9a;
+		border-radius: 50%;
+		@include adaptiveValue ("margin-bottom", 80, 0, 0);
+		img {
+			max-width: 100%;
+		}
+	}
+	&__tab {
+		display: inline-flex;
+		background-color: #40ff9a;
+		@include adaptiveValue ("height", 135, 5, 0);
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		p {
+		font-family: 'Bebas Neue';
+		@include adaptiveValue ("font-size", 75, 10, 0);
+		font-weight: 400;
+		color: #1a1b1c;
+		letter-spacing: 0.05em;
+		}
+		:hover {
+			box-shadow: 5px 5px 50px rgba(64, 255, 154, 0.3);
+			border-radius: 50%;
+		}
+		:active {
+			color: #fff;
+		}
+	}
+	&__price {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-family: 'Bebas Neue';
+		@include adaptiveValue ("font-size", 100, 10, 0);
+		font-weight: 400;
+		color: #fff;
+		letter-spacing: 0.05em;
+		@include adaptiveValue ("margin-top", 73, 0, 0);
+	}
+}
+.offers-page__column:last-child {
+	margin-right: 0px;
+}
+//==================================================================
+//Адаптив
+@media (max-width: 2610px) {
+	.offers-page {
+		&__icon {
+			img {
+				max-width: 60%;
+			}
+		}
+	}
+}
+@media (max-width: 2290px) {
+	.description-page {
+		&__text {
+			padding-right: 50px;
+		}
+	}
+}
+@media (max-width: 1810px) {
+	.description-page {
+		&__title {
+			span {
+				margin-left: 20px;
+				letter-spacing: 0.05em;
+			}
+		}
+	} 
+}
+@media (max-width: 1675px) {
+	.description-page {
+		&__title {
+			span {
+				@include adaptiveValue ("width", 110, 92, 0);
+				overflow: hidden;
+			}
+		}
+	} 
+}
+@media (max-width: 1373px) {
+	.description-page {
+		@include adaptiveValue ("margin-top", 50, 0, 0);
+		&__subtitle {
+			@include adaptiveValue ("margin-bottom", 90, -5, 0);
+		}
+		&__title {
+			@include adaptiveValue ("margin-bottom", 90, 5, 0);
+			span {
+				@include adaptiveValue ("width", 110, 60, 0);
+				overflow: hidden;
+			}
+				}
+		&__subtitle2-block {
+			@include adaptiveValue ("margin-bottom", 80, 5, 0);
+		}
+		&__text {
+			padding-right: 0px;
+		}
+	}
+	.offers-page {
+		@include adaptiveValue ("margin-top", 223, 65, 0);
+		&__icon {
+			@include adaptiveValue ("height", 215, 20, 0);
+			@include adaptiveValue ("width", 215, 20, 0);
+			img {
+				max-width: 60%;
+			}
+		}
+	}
+}
+@media (max-width: 700px) {
+	.page {
+		&__container {
+			flex-direction: column;
+		}
+		&__content {
+			@include adaptiveValue ("margin-top", -180, -10, 0);
+		}
+		&__element {
+			display: none;
+		}
+	}
+	.imageblock {
+		@include adaptiveValue ("margin-top", 325, 50, 0);
+		@include adaptiveValue ("height", 790, 100, 0);
+	}
+	.description-page {
+		width: 100%;
+			&__subtitle {
+				@include adaptiveValue ("font-size", 70, 10, 0);
+				@include adaptiveValue ("margin-bottom", 90, -5, 0);
+			}
+			&__title {
+				@include adaptiveValue ("font-size", 145, 10, 0);
+				@include adaptiveValue ("margin-bottom", 90, 5, 0);
+			}
+			&__subtitle2-block {
+				@include adaptiveValue ("padding-top", 40, 3, 0);
+				@include adaptiveValue ("padding-bottom", 40, 3, 0);
+			}
+			&__subtitle2 {
+				@include adaptiveValue ("font-size", 61, 5, 0);
+			}
+			&__text {
+				margin-bottom: 0px;
+			}
+	}
+	.offers-page {
+		margin-top: 30px;
+		margin-bottom: 70px;
+		&__row {
+		display: flex;
+		justify-content: space-around;
+		}
+		&__icon {
+			@include adaptiveValue ("height", 215, 40, 0);
+			@include adaptiveValue ("width", 215, 40, 0);
+			@include adaptiveValue ("margin-bottom", 80, 20, 0);
+		}
+		&__tab {
+			@include adaptiveValue ("height", 135, 20, 0);
+		}
+	}
+}
+@media (max-width: 500px) {
+	.page__content {
+	@include adaptiveValue ("margin-top", -180, 10, 0);
+}
+	.imageblock {
+		@include adaptiveValue ("height", 790, 200, 0);
+		@include adaptiveValue ("margin-top", 325, 90, 0);
+	}
+	.description-page {
+		width: 100%;
+		&__subtitle {
+			@include adaptiveValue ("font-size", 70, 12, 0);
+			@include adaptiveValue ("margin-bottom", 90, 10, 0);
+			line-height: 15px;
+		}
+		&__title {
+			@include adaptiveValue ("font-size", 145, 20, 0);
+			@include adaptiveValue ("margin-bottom", 90, 10, 0);
+			span {
+				display: none;
+			}
+		}
+		&__subtitle2-block {
+			left: 0;
+			margin-top: 0;
+			@include adaptiveValue ("margin-bottom", 80, 10, 0);
+			@include adaptiveValue ("padding-top", 40, 5, 0);
+			@include adaptiveValue ("padding-bottom", 40, 5, 0);
+		}
+		&__subtitle2 {
+			@include adaptiveValue ("font-size", 61, 10, 0);
+		}
+		&__text {
+			margin-top: 0;
+			left: 0;
+			@include adaptiveValue ("font-size", 48, 10, 0);
+			@include adaptiveValue ("line-height", 70, 10, 0);
+		}
+	}
+	.offers-page {
+		margin-top: 30px;
+		&__price {
+			@include adaptiveValue ("margin-top", 73, 5, 0);
+		}
+	}
+}
+
+
+
+

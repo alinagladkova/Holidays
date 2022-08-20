@@ -1,0 +1,7 @@
+node_modules
+dist
+gulp
+bash.exe.stackdump
+gulpfile.js
+package-lock.json
+package.json
